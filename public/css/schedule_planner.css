@@ -1,0 +1,53 @@
+.select-course-container{
+    width: 45%;
+    align-items:center;
+    margin:0 auto;
+}
+.center{
+    text-align: center;
+}
+table{
+    width: 100%;
+    cellspacing:"10";
+    border-collapse:separate;
+    border-spacing:0 5px;
+    table-layout:fixed;
+}
+td,th{
+    width: 10px;
+    word-wrap: break-word;
+    text-align: center;
+}
+.mp-tr{
+    outline: thin solid;
+    outline-color: lightblue;
+    outline-width: thick;
+    background-color: lightblue;
+}
+
+.tab-head{
+    color: #8B4C9A;
+}
+.logo-expande{
+    margin-right: 50%;
+    margin-left: 50%;
+}
+
+.expande{
+    color: white;
+    background-color:#8B4C9A ;
+}
+
+#spinner{
+    width: 50px;
+    height: 50px;
+}
+#sched-paginator{
+    width: 45%;
+    align-items:center;
+    margin:0 auto;
+}
+.active.page{
+    background-color:#8B4C9A ;
+    color: white;
+}
