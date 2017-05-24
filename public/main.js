@@ -8,8 +8,7 @@ var numberOfPages = 1;
 
 var isSaving = false;
 const cookieName = 'savedOptions';
-//const SERVER_URL = 'https://horarios-itam-server.herokuapp.com';
-const SERVER_URL = 'http://localhost:8000';
+const SERVER_URL = 'https://horarios-itam-server.herokuapp.com';
 
 $(document).ready(function () {
     setLoadingSpinner();

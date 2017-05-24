@@ -1,5 +1,6 @@
 {
   "projects": {
-    "horarios-itam-planner": "horarios-itam"
+    "horarios-itam-planner": "horarios-itam",
+    "default": "horarios-itam"
   }
 }
