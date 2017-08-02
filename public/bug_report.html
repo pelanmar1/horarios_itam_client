@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+    <script src="libs/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Horarios ITAM</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Planear horario</a></li>
+            <li><a href="https://generador-horarios-itam.firebaseapp.com">Generar horario</a></li>
+            <li><a href="bug_report.html">Reportar falla</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<form action="mailto:tacompanion1@gmail.com?subject=Reporte" method="post" enctype="text/plain" style="margin-left:10%;margin-right:10%">
+    <h2 style="color:#8B4C9A">Gracias por reportar el error. Haremos lo posible por corregirlo pronto.</h2>
+    <br>
+    <div class="form-group">
+        <label for="falla" style="color:#8B4C9A">Descripción:</label>
+        <textarea class="form-control" rows="10" id="falla" name="texto"></textarea>
+    </div>
+    <button type="reset" class="btn btn-secondary" >Limpiar</button>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+
+
+</body>
+</html>
+
