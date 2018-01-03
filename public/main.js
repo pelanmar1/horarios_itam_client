@@ -10,6 +10,8 @@ var isSaving = false;
 const cookieName = 'savedOptions';
 const SERVER_URL = 'https://horarios-itam-server.herokuapp.com';
 
+//const SERVER_URL = 'http://localhost:8000';
+
 $(document).ready(function () {
     setLoadingSpinner();
     getHTTPAvailableCourses();
