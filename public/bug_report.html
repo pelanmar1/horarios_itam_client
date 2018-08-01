@@ -17,28 +17,43 @@
         <ul class="nav navbar-nav">
             <li><a href="https://horarios-itam.firebaseapp.com">Planear horario</a></li>
             <li><a href="https://generador-horarios-itam.firebaseapp.com">Generar horario</a></li>
-            <li class="active"><a href="bug_report.html">Acerca de</a></li>
+            <li class="active"><a href="bug_report.html">Reportar falla</a></li>
 
         </ul>
     </div>
 </nav>
 
-<form action="mailto:tacompanion1@gmail.com?subject=Reporte" target="_top" method="post" enctype="text/plain" style="margin-left:10%;margin-right:10%">
-    <h2 style="color:#8B4C9A">App hecha por alumnos para alumnos...</h2>
-    <h3 style="color:#8B4C9A"> Por favor, ayúdanos reportando fallas. Haremos lo posible por corregirlo pronto.</h3>
+<form  style="margin-left:10%;margin-right:10%">
+    <h2 >App hecha por alumnos para alumnos...</h2>
+    <h3 > Por favor, ayúdanos reportando fallas. Haremos lo posible por corregirlo pronto.</h3>
     <br>
     <div class="form-group">
-        <label for="falla" style="color:#8B4C9A">Descripción:</label>
+        <label for="falla" >Descripción:</label>
         <textarea type="text" class="form-control" rows="10" id="falla" name="texto"></textarea>
     </div>
     <button type="reset" class="btn btn-secondary" >Limpiar</button>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button id="btnFeedback" class="btn btn-primary">Enviar</button>
 </form>
 <br><br><br>
-<h4 style="color:#8B4C9A;margin-left:10%;margin-right:10%"><stong>¡Muchas gracias!</stong> Atte: Fernando Ruiloba y Pedro Lanzagorta, desarrolladores de la app. </h4>
-<h5 style="color:#8B4C9A;margin-left:10%;margin-right:10%">NOTA: Esta forma podría no funcionar en todos los exploradores. En tal caso, porfavor envíanos las fallas al correo tacompanion1@gmail.com. </h5>
+<h4 style="margin-left:10%;margin-right:10%"><stong>¡Muchas gracias!</stong></h4>
+<br/>
+<h5 style="margin-left:10%;margin-right:10%"> Fernando Ruiloba y Pedro Lanzagorta</h5>
 
-
+<script>
+    $('#btnFeedback').click(function(event){
+        event.preventDefault();
+        if($('#falla').val() && $('#falla').val().length>0)
+            $.ajax({
+                    method: 'POST',
+                    url: 'https://horarios-itam.firebaseio.com/feedback.json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({'description':$('#falla').val()})
+                })
+                .then(function(response) {
+                    alert('To comentario ha sido registrado. ¡Gracias!')
+                });
+    })
+</script>
 
 </body>
 </html>

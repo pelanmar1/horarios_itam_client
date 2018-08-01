@@ -20,6 +20,12 @@ $(document).ready(function () {
     setButtonConfig();
 
 });
+// Firebase
+
+var listenFeedback = function(){
+    alert();
+}
+
 // -----HTTP GETs-----
 var getHTTPSchedulesForCourse = function (ind, courseName) {
     $.get(SERVER_URL + "/loadSchedules", {cName: courseName}, function (data, status) {

@@ -19,7 +19,7 @@
     <script src="main.js" type="text/javascript"></script>
     <link rel="icon" 
       type="image/png" 
-      href="res/expande.png">
+      href="res/ags.png">
 
 
     <meta charset="UTF-8">
@@ -77,21 +77,20 @@
 </nav>
 
 <div class="container" style="width: 100%">
-    <div class="jumbotron center expande">
+    <div class="jumbotron center expande" style="padding-bottom:20px">
         <div style="display: inline-table">
-            <img class="center" src="res/expande.png" alt="Expande Consejo de Alumnos"
-                 height="200px"
-                 width="200px"/>
             <h1 class="center">Horarios ITAM</h1>
             <p class="center">¡Planea tu horario!</p>
+            
         </div>
+        <p style="font-size: 12px;text-align: left;transform: translate3d(-50px,30px,0);"><i>Creado por Fer y Pedro, en colaboración con Consejo de Alumnos Expande 2017</i></p>
 
     </div>
-    <p class="center">Se muestran los horarios disponibles para primavera de 2018.</p>
+    <p class="center">Se muestran los horarios disponibles para otoño de 2018.</p>
     <br>
 </div>
 <div class="select-course-container">
-    <img id="spinner" SRC="res/spinner.gif" style="margin-right: 20px">
+    <img id="spinner" src="res/spinner_green.gif" style="margin-right: 20px">
     <select id="course-ddl"></select>
     <button id="btn-add-tab" type="button" class="btn btn-primary" style="margin-left: 20px">Cargar horarios
     </button>
@@ -146,5 +145,18 @@
     </nav>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDg2TFOCsPv7KF3ZxnCZUak9QiwZjcFHeU",
+    authDomain: "horarios-itam.firebaseapp.com",
+    databaseURL: "https://horarios-itam.firebaseio.com",
+    projectId: "horarios-itam",
+    storageBucket: "horarios-itam.appspot.com",
+    messagingSenderId: "52304681979"
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>

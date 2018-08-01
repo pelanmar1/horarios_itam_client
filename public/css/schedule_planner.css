@@ -1,3 +1,4 @@
+
 .select-course-container{
     width: 45%;
     align-items:center;
@@ -26,7 +27,7 @@ td,th{
 }
 
 .tab-head{
-    color: #8B4C9A;
+    color: #04664F;
 }
 .logo-expande{
     margin-right: 50%;
@@ -35,7 +36,7 @@ td,th{
 
 .expande{
     color: white;
-    background-color:#8B4C9A ;
+    background-color:#04664F ;
 }
 
 #spinner{
@@ -48,6 +49,6 @@ td,th{
     margin:0 auto;
 }
 .active.page{
-    background-color:#8B4C9A ;
+    background-color:#04664F ;
     color: white;
 }
