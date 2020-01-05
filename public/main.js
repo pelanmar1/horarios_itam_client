@@ -13,6 +13,7 @@ const SERVER_URL = 'https://horarios-itam-server.herokuapp.com';
 //const SERVER_URL = 'http://localhost:8000';
 
 $(document).ready(function () {
+    getFechaHorariosDisponibles();
     setLoadingSpinner();
     getHTTPAvailableCourses();
     setTabFunctionality();
@@ -22,13 +23,20 @@ $(document).ready(function () {
 });
 // Firebase
 
-var listenFeedback = function(){
+var listenFeedback = function () {
     alert();
 }
 
 // -----HTTP GETs-----
+
+var getFechaHorariosDisponibles = function () {
+    $.get(SERVER_URL, function (data, status) {
+        console.log(data);
+        $("#fecha-horarios-disponibles").text("Se muestran los horarios para " + data);
+    });
+}
 var getHTTPSchedulesForCourse = function (ind, courseName) {
-    $.get(SERVER_URL + "/loadSchedules", {cName: courseName}, function (data, status) {
+    $.get(SERVER_URL + "/loadSchedules", { cName: courseName }, function (data, status) {
         tabClassesArr.push(data);
         loadSchedulesToPanel(ind, courseName, data);
     });
@@ -99,12 +107,12 @@ var setButtonConfig = function () {
             addSchedOption(currentActivePage, getCurrSchedEvents());
             var options = JSON.stringify(getSchedOptionsList());
             deleteFromLocalStorage(cookieName);
-            saveOnLocalStorage(cookieName,options);
+            saveOnLocalStorage(cookieName, options);
         } else {
             var optionsList = JSON.parse(retrieveFromLocalStorage(cookieName));
             setSchedOptionsList(optionsList);
-            currentActivePage=1;
-            numberOfPages=optionsList.length;
+            currentActivePage = 1;
+            numberOfPages = optionsList.length;
             $('#pagination-list').html(generatePaginationHTML(currentActivePage));
             loadSchedulesToCal(currentActivePage);
         }
@@ -114,10 +122,10 @@ var setButtonConfig = function () {
 function byteLength(str) {
     // returns the byte length of an utf8 string
     var s = str.length;
-    for (var i=str.length-1; i>=0; i--) {
+    for (var i = str.length - 1; i >= 0; i--) {
         var code = str.charCodeAt(i);
         if (code > 0x7f && code <= 0x7ff) s++;
-        else if (code > 0x7ff && code <= 0xffff) s+=2;
+        else if (code > 0x7ff && code <= 0xffff) s += 2;
         if (code >= 0xDC00 && code <= 0xDFFF) i--; //trail surrogate
     }
     return s;
@@ -533,7 +541,7 @@ var onEventClick = function (eventId) {
         data = ev[evIDs[0]].data;
     $('#modal-title-txt').text(formatCourseName(data.name) + ' - Grupo ' + data.groupNum);
     $('.modal-body').html(generateModalHTML(data));
-    var modal = $('#classModal').modal({backdrop: true, keyboard: true, focus: true, show: true})
+    var modal = $('#classModal').modal({ backdrop: true, keyboard: true, focus: true, show: true })
     $('#modal-footer').html('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button><button id="btn-del-class" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar clase</button>');
     $('#btn-del-class').click(function () {
         removeCurrSchedEvent(eventId);
@@ -601,7 +609,7 @@ function readCookie(name) {
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
-function saveOnLocalStorage(name,value) {
+function saveOnLocalStorage(name, value) {
     localStorage.setItem(name, value);
 }
 function retrieveFromLocalStorage(name) {
@@ -612,14 +620,14 @@ function deleteFromLocalStorage(name) {
 }
 
 var saveCurrentOptions = function () {
-    var modal = $('#cookie-modal').modal({backdrop: true, keyboard: true, focus: true, show: true});
+    var modal = $('#cookie-modal').modal({ backdrop: true, keyboard: true, focus: true, show: true });
     $('#cookie-modal-title-txt').text('Guardar opciones de horario actuales en memoria');
     $('#cookie-modal-body-txt').text('Se perderán las opciones de horario guardadas anteriormente. ¿Estás seguro de querer continuar?');
     modal.show();
 };
 
 var loadSavedOptions = function () {
-    var modal = $('#cookie-modal').modal({backdrop: true, keyboard: true, focus: true, show: true});
+    var modal = $('#cookie-modal').modal({ backdrop: true, keyboard: true, focus: true, show: true });
     $('#cookie-modal-title-txt').text('Cargar opciones de horario guardadas en memoria');
     $('#cookie-modal-body-txt').text('Se perderán las opciones de horario actuales. ¿Estás seguro de querer continuar?');
     modal.show();
